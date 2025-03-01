@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Majude/jenkins.git'
+                git branch: 'main', credentialsId: '1f667d93-2b7e-40b0-b22e-50fb68298363', url: 'https://github.com/Majude/jenkins.git'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean package' // Change to 'npm install' or 'python setup.py install' if needed
+                bat 'mvn clean package' // Use 'bat' for Windows
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test' // Change to 'npm test' or 'pytest' if needed
+                bat 'mvn test' // Use 'bat' for Windows
             }
         }
 
