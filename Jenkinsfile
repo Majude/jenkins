@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven3' // Use the name from the Jenkins configuration
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
@@ -10,13 +14,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean package' // Use 'bat' for Windows
+                bat 'mvn clean package' // 'bat' for Windows
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test' // Use 'bat' for Windows
+                bat 'mvn test' // 'bat' for Windows
             }
         }
 
@@ -28,3 +32,4 @@ pipeline {
         }
     }
 }
+
